@@ -1,8 +1,13 @@
 Parser parser;
+PFont font;
 
 void setup(){
   size(512,512,P3D);
   parser = new Parser("skeleton.bvh");
+
+  font = loadFont("SempliceRegular-8.vlw");
+  textFont(font);
+  textMode(SCREEN);
   
   noSmooth();
   

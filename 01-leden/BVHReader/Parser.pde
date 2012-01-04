@@ -241,6 +241,17 @@ int level;
 
       translate(node.pos.x, node.pos.y, node.pos.z);
       
+      
+      pushStyle();
+      fill(0,45);
+      
+      float X = screenX(0,0,0);
+      float Y = screenY(0,0,0);
+      text("<---"+node.name,X+10,Y+4);
+      
+      
+      popStyle();
+      
       box(0.3);
 
       popMatrix();
