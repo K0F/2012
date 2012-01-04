@@ -5,7 +5,7 @@ class Parser {
   String raw[];
   String filename;
 
-  ArrayList body;
+  ArrayList nodes;
 
   Parser(String _filename) {
     filename = _filename;
@@ -20,12 +20,14 @@ class Parser {
 
   void parse() {
 
-    body = new ArrayList();
+    nodes = new ArrayList();
     
     float x,y,z;
     x=y=z=0;
     
     int level = 0;
+    
+    Node proxyParent = new Node();
 
     for (int i =0 ;i<raw.length;i++) {
       String [] tokens = splitTokens(raw[i], "\t ");
@@ -35,10 +37,10 @@ class Parser {
         z = parseFloat(tokens[3]);
         
         if(nodes.size()==0){
-         nodes.add(new Node(0,level)); 
+         nodes.add(proxyParent);
         }
         
-        body.add(new PVector(x, y, z));
+        nodes.add(new Node(nodes.size(),level,proxyParent,new PVector(x,y,z)));
       }else if(tokens[0].equals("{")){
        level++; 
       }else if(tokens[0].equals("}")){
@@ -56,13 +58,13 @@ class Parser {
     rotateX(radians(frameCount));
     
     scale(30.);
-    for (int i = 0 ; i< body.size();i++) {
+    for (int i = 0 ; i< nodes.size();i++) {
 
-      PVector bod = (PVector)body.get(i);
+      Node node = (Node)nodes.get(i);
 
       pushMatrix();
 
-      translate(bod.x, bod.y, bod.z);
+      translate(node.pos.x, node.pos.y, node.pos.z);
       box(0.1);
 
       popMatrix();
@@ -79,41 +81,35 @@ class Node{
  Node parent;
  ArrayList childs;
  int id,level;
+ String name;
  
  Node(){
-  this(0,0);
+  this(0,0,"root");
+  pos = new PVector(0,0,0);
  } 
  
- Node(int _id,int _level){
+ Node(int _id,int _level,String _name){
   id = id;
   level = _level;
+  name = _name;
   parent = this;
  }
  
- Node(int _id,int _level,PVecotr _pos){
+ Node(int _id,int _level,Node _parent,PVector _pos){
   id = id;
   level = _level;
-  parent = this;
+  parent = _parent;
   pos = _pos;
  }
  
  
- Node(int _id,int _level,PVecotr _pos, Node _parent){
+ Node(int _id,int _level,PVector _pos, Node _parent){
   id = id;
   level = _level;
-  parent = this;
   pos = _pos;
   parent = _parent;
  }
  
- Node(int _id,int _level,PVecotr _pos, Node _parent,ArrayList _childs){
-  id = id;
-  level = _level;
-  parent = this;
-  pos = _pos;
-  parent = _parent;
-  childs = _childs.get();
- }
   
 }
 
