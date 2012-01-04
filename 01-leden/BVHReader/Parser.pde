@@ -159,7 +159,7 @@ int level;
     pushMatrix();
     translate(width/2,height/2);
     //rotateY(radians(frameCount));
-    scale(17.);
+    scale(20.);
     
     Node root = (Node)nodes.get(0);
      depth = 0;
@@ -188,8 +188,8 @@ int level;
      
      
      if(depth>1){
-     one.rot.x = (cos(frameCount/(15.0+depth))*(depth/2.));
-     one.rot.y = (sin(frameCount/40.0)*45.);
+     one.rot.x = (cos(frameCount/(33.0+depth)+1)*(-15.));
+     one.rot.y = ((sin(frameCount/41.0))*15.);
      //one.rot.z = (atan(frameCount/40.0)*-10.);
      }
      
