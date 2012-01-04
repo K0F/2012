@@ -8,7 +8,8 @@ class Parser {
   ArrayList nodes;
   ArrayList tree;
   
-  int depth = 10;
+  int depth = 0;
+  int dLimit = 1800;
   
   
 float x,y,z,ox,oy,oz;
@@ -85,17 +86,17 @@ int level;
        
       }else if(tokens[0].equals("}")){
        Node parent_ = getParent();
-        if(isEnd){
+        //if(isEnd){
         
         x=parent_.pos.x;
         y=parent_.pos.y;
         z=parent_.pos.z;
-        }else{
-        x=parent_.pos.x;
-        y=parent_.pos.y;
-        z=parent_.pos.z;
+        //}else{
+        //x=parent_.pos.x;
+        //y=parent_.pos.y;
+        //z=parent_.pos.z;
           
-        }
+        //}
         level--; 
       }
     }// end FOR
@@ -152,16 +153,16 @@ int level;
      return s;       
   }
   
+  ///////////////////////////////////////////////////
+  
   void drawHieratical(){
     pushMatrix();
     translate(width/2,height/2);
-    rotateY(radians(frameCount));
+    //rotateY(radians(frameCount));
     scale(17.);
     
     Node root = (Node)nodes.get(0);
-    
-    
-    depth = 15;
+     depth = 0;
     recurseTree(root);
     
     
@@ -169,51 +170,76 @@ int level;
     
   }
   
+  
+  ///////////////////////////////////////////////////
   // draw skeleton recursively
   void recurseTree(Node in){
+    depth++;
+  
     pushMatrix();
-    depth--;
+    
     ArrayList ch = in.getChildren();
     for(int i = 0;i<ch.size();i++){
      Node one = (Node)ch.get(i);
      //
+     
+     
      translate(one.offset.x,-one.offset.y,one.offset.z);
-     rotateX(one.rot.x);
-     rotateY(one.rot.y);
-     rotateZ(one.rot.z);
-     box(0.53);     
+     
+     
+     if(depth>1){
+     one.rot.x = (cos(frameCount/(15.0+depth))*(depth/2.));
+     one.rot.y = (sin(frameCount/40.0)*45.);
+     //one.rot.z = (atan(frameCount/40.0)*-10.);
+     }
+     
+     //one.rot.y = (0);
+     
+     one.pos = new PVector(modelX(0,0,0),modelY(0,0,0),modelZ(0,0,0));
+     
+     rotateX(radians(one.rot.x));
+     rotateY(radians(one.rot.y));
+     rotateZ(radians(one.rot.z));
+     
+     
+     box(0.53);  
+  
+ 
      recurseTree(one);
+     
+     
      //
     }
     popMatrix();
+  
   }
+  
+  
+  ///////////////////////////////////////////////////
 
   void draw() {
 
     pushMatrix();
     
-    translate(width/2,height/2);
+   // translate(-width/2,-height/2);
     
-    rotateY(radians(frameCount));
+    //rotateY(radians(frameCount));
     
-    scale(17.);
+    //scale(17.);
     //scale(0,-1.,0);
     
-    
-    
-    
-    for (int i = 0 ; i< nodes.size();i++) {
+    for (int i = 2 ; i< nodes.size();i++) {
 
       Node node = (Node)nodes.get(i);
       Node parent = node.parent;
 
       
-      line(node.pos.x,-node.pos.y,node.pos.z,
-      parent.pos.x,-parent.pos.y,parent.pos.z);
+      line(node.pos.x,node.pos.y,node.pos.z,
+      parent.pos.x,parent.pos.y,parent.pos.z);
 
       pushMatrix();
 
-      translate(node.pos.x, -node.pos.y, node.pos.z);
+      translate(node.pos.x, node.pos.y, node.pos.z);
       
       box(0.3);
 
@@ -223,5 +249,7 @@ int level;
 
     popMatrix();
   }
+  
+  ///////////////////////////////////////////////////
 }
 

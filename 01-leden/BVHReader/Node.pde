@@ -12,6 +12,7 @@ class Node{
   this(0,0,"root");
   pos = new PVector(0,0,0);
   offset = new PVector(0,0,0);
+  rot = new PVector(0,0,0);
  } 
  
  Node(int _id,int _level,String _name){
@@ -56,9 +57,6 @@ class Node{
    return childs;
  }
  
- void setRotationX(float _in){
-  rot = new PVector(_in,rot.y,rot.z); 
- }
  
   
 }
