@@ -9,6 +9,6 @@ void setup(){
 void draw(){
  background(255);
 
- parser.draw(); 
-  
+ parser.drawHieratical(); 
+//parser.draw();  
 }
