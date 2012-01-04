@@ -8,11 +8,15 @@ class Node{
  int id,level;
  String name;
  
+ 
+ ArrayList trail;
+ 
  Node(){
   this(0,0,"root");
   pos = new PVector(0,0,0);
   offset = new PVector(0,0,0);
   rot = new PVector(0,0,0);
+  trail = new ArrayList();
  } 
  
  Node(int _id,int _level,String _name){
@@ -38,6 +42,8 @@ class Node{
   
   childs = new ArrayList();
   parent.addChild(this);
+  
+  trail = new ArrayList();
  }
  
  

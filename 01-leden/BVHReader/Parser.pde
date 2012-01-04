@@ -157,8 +157,10 @@ int level;
   
   void drawHieratical(){
     pushMatrix();
+    
+    // RECORDED MODIFICATIONS //
     translate(width/2,height/2);
-    //rotateY(radians(frameCount));
+    rotateY(radians(frameCount));
     scale(20.);
     
     Node root = (Node)nodes.get(0);
@@ -187,10 +189,11 @@ int level;
      translate(one.offset.x,-one.offset.y,one.offset.z);
      
      
-     if(depth>1){
-     one.rot.x = (cos(frameCount/(33.0+depth)+1)*(-15.));
-     one.rot.y = ((sin(frameCount/41.0))*15.);
-     //one.rot.z = (atan(frameCount/40.0)*-10.);
+     ///////// ANIMATION HAPPENS HERE ///////////
+     if(depth>0){
+     one.rot.x = (cos(frameCount/(33.0+depth/4.0)+1)*(-15.));
+     one.rot.y = ((sin(frameCount/41.0+depth/3.0))*15.);
+     one.rot.z = (noise(frameCount/140.0+depth/30.0)*9.);
      }
      
      //one.rot.y = (0);
@@ -241,6 +244,12 @@ int level;
 
       translate(node.pos.x, node.pos.y, node.pos.z);
       
+      node.trail.add(new PVector(node.pos.x, node.pos.y, node.pos.z));
+      if(node.trail.size()>200)
+      node.trail.remove(0);
+      
+      
+      
       
       pushStyle();
       fill(0,45);
@@ -255,6 +264,29 @@ int level;
       box(0.3);
 
       popMatrix();
+      
+      
+      pushStyle();
+      
+      beginShape();
+      noFill();
+      for(int q = 3 ; q < node.trail.size();q+=1){
+          
+        strokeWeight(map(q,0,node.trail.size(),10,1));
+          stroke(0,map(q,0,node.trail.size(),0,10));
+        
+          PVector t1 = (PVector)node.trail.get(q);
+          
+          
+          vertex(t1.x,t1.y,t1.z);
+          
+      
+        
+      }
+      endShape();
+      popStyle();
+      
+      
     }
 
 

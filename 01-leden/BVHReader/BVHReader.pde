@@ -14,13 +14,22 @@ void setup(){
 }
 
 void draw(){
+  
  background(255);
  fill(255,128,0);
  strokeWeight(10);
- lights();
- stroke(0,35);
- parser.draw(); 
+ directionalLight(255,200,200,0,0,-300);
+ 
+ 
+ pushMatrix();
+ 
  
  noStroke();
  parser.drawHieratical(); 
+ 
+ stroke(0,35);
+  parser.draw();
+ 
+ 
+ popMatrix();
  }
