@@ -72,9 +72,9 @@ class Brain {
     for (int y = 0 ; y < matrix.length;y++) {
       for (int x = 0 ; x < matrix[y].length;x++) {
          fill(
+         matrix[x][y].x*253.,
          matrix[x][y].x*255.,
-         matrix[x][y].y*255.,
-         matrix[x][y].z*255.
+         matrix[x][y].z*25.
          );
          noStroke();
          

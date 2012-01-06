@@ -1,8 +1,14 @@
+/////////////////////////////////
+//                             //
+//    BVHParser by kof 2012    //
+//                             //
+/////////////////////////////////
+
+
 class Parser {
 
-
-  boolean leaveTrail = false;
-  boolean debug = true;
+  boolean leaveTrail = true;
+  boolean debug = false;
 
   String raw[];
   String filename;

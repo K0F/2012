@@ -8,6 +8,8 @@ void setup() {
   font = loadFont("SempliceRegular-8.vlw");
   textFont(font);
   textMode(SCREEN);
+  
+  noiseSeed(19);
 
   noSmooth();
 }
@@ -19,17 +21,14 @@ void draw() {
   strokeWeight(10);
   directionalLight(255, 200, 200, 0, 0, -300);
 
-
   pushMatrix();
-
 
   noStroke();
   parser.drawHieratical(); 
 
   stroke(0, 35);
   parser.draw();
-
-
+  
   popMatrix();
 }
 

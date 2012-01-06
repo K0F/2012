@@ -18,7 +18,6 @@ class Parser {
 
   int depth = 0;
   int dLimit = 1800;
-  float sx = 0,sy =0,sz = 0;
 
 
   float x, y, z, ox, oy, oz;
@@ -165,12 +164,13 @@ class Parser {
 
   void drawHieratical() {
     pushMatrix();
-Node root = (Node)nodes.get(0);
-    // RECORDED MODIFICATIONS //
-    translate(noise(frameCount/400.0)*60+width/2.+random(-1,1), width/3*2+noise(frameCount/200.0)*220+random(-1,1));
-    //rotateY(radians(frameCount));
-    scale(20.);
 
+    // RECORDED MODIFICATIONS //
+    //translate(width/2, height/2);
+    //rotateY(radians(frameCount));
+    //scale(20.);
+
+    Node root = (Node)nodes.get(0);
     depth = 0;
     recurseTree(root);
 
@@ -195,25 +195,15 @@ Node root = (Node)nodes.get(0);
       translate(one.offset.x, -one.offset.y, one.offset.z);
 
 
+
+      if(animate){
       ///////// ANIMATION HAPPENS HERE ///////////
-      if (depth>=0) {
-        int sel = i+depth;
-        sx += (brain.matrix[sel%brain.dim][(i)%brain.dim].x*1001.0-one.rot.x)/(noise(frameCount/300.0+(depth+i))*80.0);
-        sy += (brain.matrix[sel%brain.dim][(i)%brain.dim].y*1002.0-one.rot.y)/(noise(frameCount/310.0+(depth+i)*1000)*80.0);
-        sz += (brain.matrix[sel%brain.dim][(i)%brain.dim].z*1003.0-one.rot.z)/(noise(frameCount/300.0+(depth+i)*2000)*80.0);
-        brain.matrix[sel%brain.dim][(depth^i)%brain.dim].add(new PVector(sx,sy,sz));
-        brain.matrix[sel%brain.dim][(depth^i)%brain.dim].normalize();
-        
-      one.rot.x += (sx-one.rot.x)/70.0;
-      one.rot.y += (sy-one.rot.y)/50.0;
-      one.rot.z += (sz-one.rot.z)/60.0;
-      
-      sx = constrain(sx,-35,0);
-      sy = constrain(sy,-40/depth,-10);
-      sz = constrain(sz,-12,12);
-      
+      if (depth>0) {
+        one.rot.x = (cos(frameCount/(33.0+depth/4.0)+1)*(-15.));
+        one.rot.y = ((sin(frameCount/41.0+depth/3.0))*15.);
+        one.rot.z = (noise(frameCount/140.0+depth/30.0)*9.);
       }
-      
+      }
 
       //one.rot.y = (0);
 
@@ -224,7 +214,7 @@ Node root = (Node)nodes.get(0);
       rotateZ(radians(one.rot.z));
 
 
-      box(1.3);  
+      //sphere(0.53);  
 
 
       recurseTree(one);
@@ -263,20 +253,18 @@ Node root = (Node)nodes.get(0);
       translate(node.pos.x, node.pos.y, node.pos.z);
 
       node.trail.add(new PVector(node.pos.x, node.pos.y, node.pos.z));
-      if (node.trail.size()>50)
+      if (node.trail.size()>200)
         node.trail.remove(0);
 
 
 
 
       pushStyle();
-      fill(0, 95);
+      fill(0, 45);
 
       float X = screenX(0, 0, 0);
       float Y = screenY(0, 0, 0);
       text("<---"+node.name, X+10, Y+4);
-      
-      
 
 
       popStyle();
@@ -295,13 +283,12 @@ Node root = (Node)nodes.get(0);
         for (int q = 3 ; q < node.trail.size();q+=1) {
 
           strokeWeight(map(q, 0, node.trail.size(), 10, 1));
-          stroke(255, map(q, 0, node.trail.size(), 30, 5));
+          stroke(0, map(q, 0, node.trail.size(), 0, 10));
 
           PVector t1 = (PVector)node.trail.get(q);
 
 
           vertex(t1.x, t1.y, t1.z);
-          t1.y -= 56;
         }
         endShape();
         popStyle();
