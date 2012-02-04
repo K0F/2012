@@ -37,13 +37,13 @@ void draw(){
 
 
     int idx = 0;
-  for(int y = 0;y < height/plny.height;y++){
-    for(int x = 0;x < width/plny.width;x++){
+  for(int y = 0;y <= height/plny.height;y++){
+    for(int x = 0;x <= width/plny.width;x++){
 
       pushMatrix();
         translate(x*r+plny.width/2,y*r+plny.height/2);
       rotate(radians(theta[idx]));
-        theta[idx] += degrees(atan2(cos(frameCount/50.0+mouseY-y*r),sin(frameCount/59.0+mouseX-x*r)));//#rot[(idx+x+y)%rot.size];
+        theta[idx] += 0.4*degrees(frameCount/20.0*atan2(mouseY-y*r,mouseX-x*r));//#rot[(idx+x+y)%rot.size];
         idx += 1;
 
         image (plny,0,0);
