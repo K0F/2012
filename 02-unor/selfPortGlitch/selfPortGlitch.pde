@@ -8,7 +8,7 @@
 import java.awt.Toolkit;
 
 // define the JPEG! picture filename
-String filename = "kof3.jpg";
+String filename = "tatlin004.jpg";
 
 // create temporary awt.Image obejct 
 Image tmp;
@@ -51,7 +51,7 @@ void setup()
   //size(ptmp.width, ptmp.height, P2D);
 
   //fixed width height for applet only
-  size(360, 640, P2D);
+  size(414, 600, P2D);
 
   //no smooth for more raw feeling and speed
   noSmooth();
@@ -151,7 +151,7 @@ void draw() {
   for (int i = 0;i<txt.size();i++) {
     int pos = txt.size()*8;
     String ln = (String)txt.get(i);
-    fill(255, 70);
+    fill(0, 180);
     text(ln, width-3, i*8);
   }
 
