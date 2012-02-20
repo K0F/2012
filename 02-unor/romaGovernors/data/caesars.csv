@@ -1,0 +1,98 @@
+#,JMÉNO,"CELÉ JMÉNO",DYNASTIE,STÁT,*,†,VĚK,VLÁDA*,VLÁDA†,VLÁDA,STOLETÍ
+,,,,,,,ROKY,,,ROKY,
+,"JULIUS CAESAR","Gaius Iulius Caesar",IULSKO-CLAUDIJSKÁ,,-100,-44,56,-60,-44,16,-1.st.
+1,AUGUSTUS,"Gaius Iulius Caesar Octavianus, Imperator Caesar Divi filius Augustus Pater patriae,po zbožtění Divus Augustus Divi filius.",,PRINCIPÁT,-63,14,77,-31,14,45,1.st.
+2,TIBERIUS,"rodným jménem Tiberius Claudius Nero, Tiberius Julius Caesar Augustus ",,,-42,37,79,14,37,23,1.st.
+3,CALIGULA,"Gaius Caesar Augustus Germanicus",,,12,41,29,37,41,4,1.st.
+4,CLAUDIUS,"občanským jménem Tiberius Claudius Drusus Nero Germanicus, Tiberius Claudius Caesar Augustus Germanicus Britanicus",,,-10,54,64,41,54,13,1.st.
+5,NERO,"rodným jménem Lucius Domitius Ahenobarbus, Nero Claudius Caesar Augustus Germanicus",,,37,68,31,54,68,14,1.st.
+6,GALBA,"Servius Sulpicius Galba",,,-3,69,72,68,69,1,1.st.
+7,OTHO,"Marcus Salvius Otho",,,32,69,37,69,69,0,1.st.
+8,VITELLIUS,"Aulus Vitellius Germanicus",,,15,69,54,69,69,0,1.st.
+9,VESPASIANUS,"Titus Flavius Vespasianus",FLAVIOVSKÁ,,9,79,70,69,79,10,1.st.
+10,TITUS,"Titus Flavius Vespasianus, jako císař Imperator Titus Caesar divi Vespasiani filius Vespasianus Augustus",,,39,81,42,79,81,2,1.st.
+11,DOMITIANUS,"Titus Flavius Domitianus",,,51,96,45,81,96,15,1.st.
+12,NERVA,"Marcus Cocceius Nerva","ADOPTIVNÍCH CÍSAŘŮ",,30,98,68,96,98,2,1.st.
+13,TRAIANUS,"Marcus Ulpius Traianus","ADOPTIVNÍCH CÍSAŘŮ",,56,117,61,98,117,19,2.st.
+14,HADRIANUS,"Publius Aelius Hadrianus","ADOPTIVNÍCH CÍSAŘŮ",,76,138,62,117,138,21,2.st.
+15,"ANTONINUS PIUS","Titus Aurelius Fulvus Boionius Arrius Antoninus","ADOPTIVNÍCH CÍSAŘŮ",,86,161,75,138,161,23,2.st.
+16,"MARCUS AURELIUS","Marcus Aurelius Antoninus Augustus","ADOPTIVNÍCH CÍSAŘŮ",,121,180,59,161,180,19,2.st.
+17,"LUCIUS VERUS","rodným jménem Lucius Ceionius Commodus, Lucius Aurelius Verus","ADOPTIVNÍCH CÍSAŘŮ",,130,169,39,161,169,8,2.st.
+18,COMMODUS,"Lucius Aurelius Commodus","ADOPTIVNÍCH CÍSAŘŮ",,161,192,31,180,192,12,2.st.
+19,PERTINAX,"Publius Helvius Pertinax",,,126,193,67,193,193,0,2.st.
+20,"DIDIUS JULIANUS","Marcus Didius Severus Iulianus",,,133,193,60,193,193,0,2.st.
+21,"SEPTIMIUS SEVERUS","Lucius Septimius Severus, jako císař Lucius Septimius Severus Pertinax",SEVEROVSKÁ,,146,211,65,193,211,18,2.st.
+,"PESCENNIUS NIGER","Gaius Pescennius Niger",,UZURPÁTOR,135,195,60,193,195,2,2.st.
+,"CLODIUS ALBINUS","Decimus Clodius Albinus, jako císař Decimus Clodius Septimius Albinus",,UZURPÁTOR,145,197,52,195,197,2,2.st.
+22,CARACALLA,"rod.jméno Lucius Septimius Bassianus, Marcus Aurelius Severus Antoninus, ",,,188,217,29,211,217,6,3.st.
+23,GETA,,,,189,211,22,211,211,0,3.st.
+24,MACRINUS,,,,164,218,54,217,218,1,3.st.
+25,ELAGABALUS,"Varius Avitus Bassianus, císař Marcus Aurelius Antoninus",,,204,222,18,218,222,4,3.st.
+26,"SEVERUS ALEXANDER",,,,208,235,27,222,235,13,3.st.
+27,"MAXIMINUS I. THRAX",,"VOJENŠTÍ CÍSAŘI",,172,238,66,235,238,3,3.st.
+28,"GORDIANUS I.",,,,159,238,79,238,238,0,3.st.
+29,"GORDIANUS II.",,,,192,238,46,238,238,0,3.st.
+30,BALBINUS,,,,170,238,68,238,238,0,3.st.
+31,PUPIENUS,,,,164,238,74,238,238,0,3.st.
+32,"GORDIANUS III.",,,,225,244,19,238,244,6,3.st.
+33,"PHILIPPUS I. ARABS","Marcus Iulius Philippus",,,204,249,45,244,249,5,3.st.
+34,"TRAIANUS DECIUS","Gaius Messius Quintus Decius Valerianus, jako císař Gaius Messius Quintus Traianus Decius",,,190,251,61,249,251,2,3.st.
+36,"TREBONIANUS GALLUS","Gaius Vibius Trebonianus Gallus",,,206,253,47,251,253,2,3.st.
+,AEMILIANUS,"Marcus Aemilius Aemilianus",,,214,253,39,253,253,0,3.st.
+40,VALERIANUS,"Publius Licinius Valerianus",,,199,260,61,253,260,7,3.st.
+41,GALLIENUS,"Publius Licinius Egnatius Gallienus",,,218,268,50,253,268,15,3.st.
+,POSTUMUS,"Marcus Cassianius Latinius Postumus",,"GALSKÉ CÍSAŘSTVÍ",X,269,#VALUE!,260,269,9,3.st.
+42,"CLAUDIUS II. GOTHICUS","Marcus Aurelius Claudius",,,214,270,56,268,270,2,3.st.
+43,QUINTILLUS,"Marcus Aurelius Claudius Quintillus",,,220,270,50,270,270,0,3.st.
+44,AURELIANUS,"Lucius Domitius Aurelianus",,,214,275,61,270,275,5,3.st.
+45,TACITUS,"Marcus Claudius Tacitus",,,200,275,75,275,276,1,3.st.
+46,FLORIANUS,"Marcus Annius Florianus",,,210,276,66,276,276,0,3.st.
+47,PROBUS,"Marcus Aurelius Probus",,,232,282,50,276,282,6,3.st.
+48,CARUS,"Marcus Aurelius Carus",,,224,283,59,282,283,1,3.st.
+49,CARINUS,"Marcus Aurelius Carinus",,,250,285,35,283,285,2,3.st.
+50,NUMERIANUS,"Marcus Aurelius Numerius Numerianus",,,253,284,31,283,284,1,3.st.
+51,DIOCLETIANUS,"Gaius Aurelius Valerius Diocletianus",TETRARCHIE,DOMINÁT,240,316,76,284,305,21,4.st.
+,MAXIMIANUS,,,,240,310,70,286,305,19,4.st.
+,MAXIMIANUS,,,,,,0,307,308,1,4.st.
+,CARAUSIUS,"Marcus Aurelius Mausaeus Valerius Carausius",,UZURPÁTOR,X,293,#VALUE!,286,293,7,4.st.
+,"CONSTANTINUS I. CHLORUS",,,,X,306,#VALUE!,305,306,1,4.st.
+,GALERIUS,,,,250,311,61,305,311,6,4.st.
+,"SEVERUS II.",,,,X,307,#VALUE!,306,307,1,4.st.
+,MAXENTIUS,"Marcus Aurelius Valerius Maxentius",,,279,312,33,306,312,6,4.st.
+,"KONSTANTIN I. VELIKÝ","Flavius Valerius Constantinus",,,285,337,52,306,337,31,4.st.
+,LICINIUS,,,,250,324,74,308,324,16,4.st.
+,"MAXIMIUS II. DAIA","Gaius Galerius Valerius Maximinus",,,270,313,43,310,313,3,4.st.
+,"CONSTANTINUS II.",,CONSTANTIOVSKÁ,,316,340,24,337,340,3,4.st.
+,"CONSTANTIUS II.",,,,317,361,44,337,361,24,4.st.
+,"CONSTANS I.",,,,320,350,30,337,350,13,4.st.
+,MAGNENTIUS,,,,303,353,50,350,353,3,4.st.
+,"JULIANUS APOSTATA","Flavius Claudius Julianus",,,332,363,31,361,363,2,4.st.
+,JOVIANUS,,,,330,364,34,363,364,1,4.st.
+,"VALENTINIANUS I.",,VALENTIANSKO-THEODOSIOVSKÁ,,321,375,54,364,375,11,4.st.
+,VALENS,,,VÝCHOD,328,378,50,364,378,14,4.st.
+,GRATIANUS,,,,359,383,24,367,383,16,4.st.
+,"VALENTINIANUS II.",,,,371,392,21,375,392,17,4.st.
+,"THEODOSIUS I. VELIKÝ",,,VÝCHOD,347,395,48,379,395,16,4.st.
+,"MAGNUS MAXIMUS",,,,X,388,#VALUE!,383,388,5,4.st.
+,ARCADIUS,,,VÝCHOD,377,408,31,395,408,13,5.st.
+,HONORIUS,,,,383,423,40,395,423,28,5.st.
+,"CONSTANTINUS III.",,,,X,411,#VALUE!,407,411,4,5.st.
+,"THEODOSIUS II.",,,VÝCHOD,401,450,49,408,450,42,5.st.
+,"CONSTANTIUS III.",,,,X,421,#VALUE!,421,421,0,5.st.
+,JOHANES,,,,X,425,#VALUE!,423,425,2,5.st.
+,"VALENTINIANUS III.",,,,419,455,36,425,455,30,5.st.
+,MARCIANUS,,,VÝCHOD,392,457,65,450,457,7,5.st.
+,"PETRONIUS MAXIMUS",,,,396,455,59,455,455,0,5.st.
+,AVITUS,,,,X,456,#VALUE!,455,456,1,5.st.
+,"LEO I. VELIKÝ",,,VÝCHOD,401,474,73,457,474,17,5.st.
+,MAIORIANUS,,,,X,461,#VALUE!,457,461,4,5.st.
+,"LIBIUS SEVERUS",,,,X,465,#VALUE!,461,465,4,5.st.
+,ANTHEMIUS,,,,X,472,#VALUE!,467,472,5,5.st.
+,OLYBRIUS,,,,X,472,#VALUE!,472,472,0,5.st.
+,GLYCERINUS,,,,X,474,#VALUE!,473,474,1,5.st.
+,"JULIUS NEPOS",,,,X,480,#VALUE!,474,475,1,5.st.
+,"JULIUS NEPOS",,,,,,0,477,480,3,5.st.
+,ZENO,,,VÝCHOD,X,491,#VALUE!,474,475,1,5.st.
+,ZENO,,,VÝCHOD,,,0,476,491,15,5.st.
+,BASILISCUS,,,VÝCHOD,X,476,#VALUE!,475,476,1,5.st.
+,"ROMULUS AUGUSTULUS",,,,X,511,#VALUE!,475,476,1,6.st.

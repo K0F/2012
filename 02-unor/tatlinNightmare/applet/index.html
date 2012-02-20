@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <!-- charset must remain utf-8 to be handled properly by Processing -->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <title>tatlinNightmare : Built with Processing</title>
+
+    <style type="text/css">
+      /* <![CDATA[ */
+	
+	body {
+  	  margin: 60px 0px 0px 55px;
+	  font-family: verdana, geneva, arial, helvetica, sans-serif; 
+	  font-size: 11px; 
+	  background-color: #ddddcc; 
+	  text-decoration: none; 
+	  font-weight: normal; 
+	  line-height: normal; 
+	}
+		 
+	a          { color: #3399cc; }
+	a:link     { color: #3399cc; text-decoration: underline; }
+	a:visited  { color: #3399cc; text-decoration: underline; }
+	a:active   { color: #3399cc; text-decoration: underline; }
+	a:hover    { color: #3399cc; text-decoration: underline; }
+
+      /* ]]> */
+    </style>    
+  </head>
+
+  <body>
+    <div id="content">
+      <div id="tatlinNightmare_container">
+
+	<!-- This version plays nicer with older browsers, 
+	     but requires JavaScript to be enabled. 
+	     http://java.sun.com/javase/6/docs/technotes/guides/jweb/deployment_advice.html
+	     http://download.oracle.com/javase/tutorial/deployment/deploymentInDepth/ -->
+	<script type="text/javascript"
+		src="http://www.java.com/js/deployJava.js"></script>
+	<script type="text/javascript">
+	  /* <![CDATA[ */
+
+	  var attributes = { 
+            code: 'tatlinNightmare.class',
+            archive: 'tatlinNightmare.jar',
+            width: 483, 
+            height: 600,
+          };
+          var parameters = { 
+            image: 'loading.gif',
+            centerimage: 'true',
+          };
+          var version = '1.5';
+          deployJava.runApplet(attributes, parameters, version);
+
+          /* ]]> */
+        </script>
+        
+	<noscript> <div>
+	  <!--[if !IE]> -->
+	  <object classid="java:tatlinNightmare.class" 
+            	  type="application/x-java-applet"
+            	  archive="tatlinNightmare.jar"
+            	  width="483" height="600"
+            	  standby="Loading Processing software..." >
+            
+	    <param name="archive" value="tatlinNightmare.jar" />
+	    
+	    <param name="mayscript" value="true" />
+	    <param name="scriptable" value="true" />
+	    
+	    <param name="image" value="loading.gif" />
+	    <param name="boxmessage" value="Loading Processing software..." />
+	    <param name="boxbgcolor" value="#FFFFFF" />
+	  <!--<![endif]-->
+
+	    <!-- For more instructions on deployment, 
+		 or to update the CAB file listed here, see:
+		 http://java.sun.com/javase/6/webnotes/family-clsid.html
+		 http://java.sun.com/javase/6/webnotes/install/jre/autodownload.html -->
+	    <object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"
+		    codebase="http://java.sun.com/update/1.6.0/jinstall-6u20-windows-i586.cab"
+		    width="483" height="600"
+		    standby="Loading Processing software..."  >
+	      
+	      <param name="code" value="tatlinNightmare" />
+	      <param name="archive" value="tatlinNightmare.jar" />
+	      
+	      <param name="mayscript" value="true" />
+	      <param name="scriptable" value="true" />
+	      
+	      <param name="image" value="loading.gif" />
+	      <param name="boxmessage" value="Loading Processing software..." />
+	      <param name="boxbgcolor" value="#FFFFFF" />
+	      
+	      <p>
+		<strong>
+		  This browser does not have a Java Plug-in.
+		  <br />
+		  <a href="http://www.java.com/getjava" title="Download Java Plug-in">
+		    Get the latest Java Plug-in here.
+		  </a>
+		</strong>
+	      </p>
+	      
+	    </object>
+	    
+	  <!--[if !IE]> -->
+	  </object>
+	  <!--<![endif]-->
+
+	</div> </noscript>
+
+      </div>
+      
+      <p>
+	
+    Live glitching, tatlin's nightmare
+    by Krystof Pesek / Kof, 2012
+/
+
+
+// import library for native awt picture manipulation
+import java.awt.Toolkit;
+
+// define the JPEG! picture filename
+String filename = "tatlin001.jpg";
+
+// create temporary awt.Image obejct 
+Image tmp;
+// and create resulting PImage processing native object
+PImage ptmp, original;
+
+// this is out byte[] data array
+// all the *magic* happenes inside
+byte[] data;
+
+// some extra PGraphics to beautify output burred border of sketch
+PGraphics ram;
+
+// this array is for *console* test outputting error matrix
+ArrayList txt;
+
+// dcnt is for printing byte errors after bit bombardment
+int dcnt[];
+
+void setup()
+{
+  // load data into our array first
+  data = loadBytes(filename);
+
+  // create the *console* arraylist, each line per entry
+  txt = new ArrayList();
+
+  // this calls a function which returns an PImage
+  // argument passed means how much damage we want to make
+  // original is our backup image so we pass 0, no damage at all
+  original = corruptImage(0);
+
+  //this is our displaying image
+  //here we can produce first glitch
+  //by passing 1
+  ptmp = corruptImage(1);
+
+  // let's define the size according to
+  // dimmensions of loaded image
+  //size(ptmp.width, ptmp.height, P2D);
+
+  //fixed width height for applet only
+  size(483, 600, P2D);
+
+  //no smooth for more raw feeling and speed
+  noSmooth();
+
+  //functions to load console font
+  textFont(loadFont("53Seed-8.vlw"));
+  textAlign(RIGHT);
+  // for pixel fonts and P2D renderer this
+  // is almost necessary for readability
+  // the text will not receive transformations
+  // but otherwise the font gets really ugly
+  textMode(SCREEN);
+
+  // let's create some extra graphics
+  ram = createGraphics(width, height, P2D);
+  // smooth black border rendering into it
+  ram.beginDraw();
+  ram.noFill();
+  ram.stroke(0, 150);
+  ram.strokeWeight(10);
+  ram.rect(0, 0, width, height);
+  ram.endDraw();
+  ram.filter(BLUR, 7.5);
+}
+
+
+/**
+  Routine to actual data corruption
+ 
+
+      </p>
+      
+      <p>
+	Source code: <a href="tatlinNightmare.pde">tatlinNightmare</a> <a href="zGetFromJpeg.pde">zGetFromJpeg</a> 
+      </p>
+      
+      <p>
+	Built with <a href="http://processing.org" title="Processing.org">Processing</a>
+      </p>
+    </div>
+  </body>
+</html>
