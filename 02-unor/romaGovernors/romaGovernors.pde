@@ -8,6 +8,7 @@ void setup(){
   textFont(createFont("Semplice Regular",8,false));
   textMode(SCREEN);
 
+
   parser = new Parser("caesars.csv",caesars);
 
   viz = new Viz(caesars);
@@ -25,7 +26,7 @@ class Viz{
   Viz(ArrayList _entries){
     entries = _entries;
   }
-  
+
   void draw(){
     for (int i = 0 ; i < entries.size();i++){
       Person entry = (Person)entries.get(i);
@@ -34,7 +35,7 @@ class Viz{
       String name = entry.getName();
 
       fill(0);
-      text(name,b,height-100);
+      text(name,b+100,height-100);
 
     }
   }
@@ -58,7 +59,8 @@ class Parser{
     for (int i = 2 ; i< raw.length;i++){
       String ln = raw[i]+"";
       String parsed[] = splitTokens(ln,"\",");
-      persons.add(new Person(parsed[1],parsed[2],parseInt(parsed[5]),parseInt(parsed[6])));
+      if(parsed.length>6)
+        persons.add(new Person(parsed[1],parsed[2],parseInt(parsed[5]),parseInt(parsed[6])));
     }
   }
 }
@@ -72,7 +74,6 @@ class Person{
   int govEnd;
   int death;
   String century;
-
 
   Person(String _name,String _fullname,int _birth,int _death){
     name = _name;
