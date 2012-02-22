@@ -4,7 +4,7 @@ import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
 
 ////////////////////////////////////////
-//  Hard quest of Zyrkos              //
+//  Stop the madness!                 //
 //  kof, 2012                         //
 ////////////////////////////////////////
 
@@ -16,12 +16,15 @@ int splatCnt = 0;
 ArrayList heroes;
 Hero you;
 Ram ram;
+Rain rain;
+
+int raining_intensity = 800;
 
 PFont font;
 
 int kills = 0;
 int saved = 0;
-int hardLimit = 5;
+int hardLimit = 30;
 boolean fail = false;
 
 boolean intro = true;
@@ -74,7 +77,7 @@ void setup() {
   introduction = minim.loadSnippet("intro.mp3");
 
   announce = minim.loadSnippet("background2.mp3");
-  
+
   failsong = minim.loadSnippet("fail.mp3");
 
   //input = minim.getLineIn();
@@ -101,8 +104,10 @@ void setup() {
   } 
   createLens();
 
+  rain = new Rain(raining_intensity);
 
-  introduction.play();
+
+  introduction.loop();
 }
 
 void stop() {
@@ -185,11 +190,20 @@ void draw() {
     fastblur(g, 5);
     updatePixels();   
     fill(0, 155);
+    noStroke();
     rect(0, 0, width, height);
     fill(255, 255, 255);
     textAlign(CENTER);
-    text("Our lives is in your hands sir,\n our crude governor is killing our neighbors\n please lead us away from his terror!", 
-    width/2, height/2-75); 
+    
+    text("Our lives and lives of our children is in your hands.."+
+    "The global corporates are helping our rotten government"+
+    " to find and destroy it's opponents. They are getting more"+
+    " and more powerful; so they are able to find more and more people."+
+    "\nPlease, you have to stop this, we will follow you!\n\n"+
+    "(click to continue)",
+    20, height/2-125,
+    width-40,height); 
+    
     textAlign(LEFT);
 
     image(animDown[0], 160, 160, 
@@ -210,7 +224,7 @@ void draw() {
      }
      */
 
-    if (frameCount%100==0 && !fail)
+    if (frameCount%50==0 && !fail)
       addNew();
 
     Collections.sort(heroes, new Comparator() {
@@ -256,14 +270,18 @@ void draw() {
     if (!ramz)
       ram.draw();
     //noTint();
-
+    rain.display();
+     animCursor();
+    
     if (ram.z<5) {
       g.loadPixels();
       fastblur(g, 5-(int)ram.z);
       g.updatePixels();
     }
 
-    animCursor();
+   
+
+    
     image(lens, 0, 0);
 
 
@@ -271,17 +289,17 @@ void draw() {
 
 
     fill(255);
-    text("population: "+heroes.size(), 10, height-10);
-    text("casualities: "+kills, 10, height-20);
+    text("population count: "+heroes.size(), 10, height-10);
+    text("the casualties: "+kills, 10, height-20);
 
 
 
     if (kills>=hardLimit) {
-      if(!fail)
-      failsong.play();
-      
+      if (!fail){
+        failsong.play();
+        saved = heroes.size();
+      }
       fail = true;
-      saved = heroes.size();
 
 
 
@@ -289,10 +307,11 @@ void draw() {
       fastblur(g, 5);
       updatePixels();   
       fill(0, 55);
+      noStroke();
       rect(0, 0, width, height);
       fill(255, 255, 255);
       textAlign(CENTER);
-      text("Ouch, you have lost too many innocent souls!\n you have managed to save "+saved+" lives\n\n TRY TO SAVE MORE!", 
+      text("Ahh wait, this is getting way too messy, you had lost too many innocent people!\n anyway, you have managed to save "+saved+" lives, well done.. \n\n TRY TO SAVE MORE!", 
       width/2, height/2-75); 
       textAlign(LEFT);
     }
@@ -730,7 +749,7 @@ class Ram {
     stroke(0);
     fill(255, 255, 0);
 
-    println(frameCount);
+    //println(frameCount);
 
     if (frameCount>730 && !falling)
       moving = falling = true;
@@ -833,6 +852,67 @@ void mousePressed() {
     background.loop();
     announce.play();
     introduction.close();
+  }
+}
+
+class Rain {
+  ArrayList drops; 
+
+  Rain(int _num) {
+    drops = new ArrayList();
+
+    for (int i =0 ;  i < _num;i++)
+      drops.add(new Drop());
+  }
+
+  void display() {
+    for (int i =0 ;  i < drops.size();i++) {
+      Drop d = (Drop)drops.get(i);
+      d.display();
+    }
+  }
+}
+
+class Drop {
+  PVector pos, ppos;
+  float cyc;
+  float wind = 0.45;
+  Drop() {
+    cyc = random(height)/4;
+    float x = random(-width, width*2);
+    float y = random(0,height);
+    pos = new PVector(x, y); 
+    ppos = new PVector(x, y);
+    
+    
+  }
+
+  void generate() {
+    cyc = -random(height)/4;
+    float x = random(-width, width*2);
+    float y = -random(height);
+    pos = new PVector(x, y); 
+    ppos = new PVector(x, y);
+  }
+
+  void display() {
+    pos.y += 6;
+    pos.add(new PVector(1*(noise((cyc+pos.x)/30.0)-0.5), 0));
+    pos.x += wind;
+    stroke(255, 120);
+    line(pos.x, pos.y, ppos.x, ppos.y);
+    ppos.x = pos.x;
+    ppos.y = pos.y;
+
+    cyc++;
+
+    if (cyc>height/4.0) {
+      noFill();
+      stroke(255,20);
+      ellipse(pos.x,pos.y,3,1.5);
+      cyc = 0;
+      generate();
+    }
   }
 }
 
