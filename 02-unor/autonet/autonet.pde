@@ -1,8 +1,8 @@
-/////////////////////////////////
+////////////////////////////////
 ArrayList nodes;
 
 // number of entities //
-int num = 200;
+int num = 50;
 
 // number of nurons per entity //
 int neurons_per_node = 20;
@@ -24,31 +24,55 @@ float ratio = 8.;
 boolean nodes_are_assimilating  = false;
 
 // global movability of entities //
-float glob_speed = 4.0;
+float glob_speed = 3.0;
 
 // global radius //
-float R = 20.0;
+float R = 40.0;
 
 
 boolean rec = false;
 
 boolean attract = true;
-float attract_force = 3000.0;
+float attract_force =5000.0;
 
 PVector follow;
-float follow_speed = 50.0;
+float follow_speed = 70.0;
+
+
+PGraphics fram;
 /////////////////////////////////
 
 
 boolean display_lines = true;
 void setup(){
-  size(1280,720,P2D);
+  size(640,320,P2D);
+
+  noiseSeed(19);
+
+  fram = mkFram(30,30);
+ 
+  
 
   follow = new PVector(width/2,height/2);
 
   nodes = new ArrayList();
   for(int i = 0 ; i < num;i++)
     nodes.add(new Node(i,neurons_per_node,neuron_conectivity));
+}
+
+PGraphics mkFram(int w,int b){
+  PGraphics tmp = createGraphics(width,height,P2D);
+
+  tmp.beginDraw();
+  tmp.strokeWeight(w);
+  tmp.noFill();
+  tmp.rect(0,0,width,height);
+  
+  tmp.filter(BLUR,b);
+  tmp.endDraw();
+
+
+  return tmp;
 }
 
 
@@ -83,6 +107,8 @@ void draw(){
   fastblur(g,(int)(noise(frameCount/300.0)*4.0+1));
   //tint(255,20);
   //image(g,0,0);
+
+  image(fram,0,0);
 
   if(rec)
     saveFrame("/home/kof/render/flys/fr#####.png");
@@ -334,7 +360,7 @@ class Connection{
 
   ///////////////////////////////////////
   void update(){
-    pulse = noise((diff+frameCount)/(one.id+two.id+1.0));
+    pulse = noise((diff+frameCount)/(one.id+two.id+40.0))*1.5;
 
 
     one.pos.x = cos(pulse*3.)*R*w;
