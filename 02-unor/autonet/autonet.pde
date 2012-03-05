@@ -1,3 +1,31 @@
+/**
+*  Neural Caravan by Krystof Pesek, licensed under Creative Commons Attribution-Share Alike 3.0 license.
+*  Work: http://openprocessing.org/visuals/?visualID=53531
+*  License: http://creativecommons.org/licenses/by-sa/3.0/
+*
+* visit more @ http://vimeo.com/kof
+* if you leave this header, bend, share, spread the code, it is a freedom!
+*
+*   ,dPYb,                  ,dPYb,
+*   IP'`Yb                  IP'`Yb
+*   I8  8I                  I8  8I
+*   I8  8bgg,               I8  8'
+*   I8 dP" "8    ,ggggg,    I8 dP
+*   I8d8bggP"   dP"  "Y8ggg I8dP
+*   I8P' "Yb,  i8'    ,8I   I8P
+*  ,d8    `Yb,,d8,   ,d8'  ,d8b,_
+*  88P      Y8P"Y8888P"    PI8"8888
+*                           I8 `8,
+*                           I8  `8,
+*                           I8   8I
+*                           I8   8I
+*                           I8, ,8'
+*                            "Y8P'
+*
+*/
+
+
+
 ////////////////////////////////
 ArrayList nodes;
 
@@ -104,7 +132,7 @@ void draw(){
   popMatrix();
 
 
-  fastblur(g,(int)(noise(frameCount/300.0)*4.0+1));
+  //fastblur(g,(int)(noise(frameCount/300.0)*4.0+1));
   //tint(255,20);
   //image(g,0,0);
 
