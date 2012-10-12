@@ -1,5 +1,7 @@
 render
 applet
+web-export
+application*
 *.zip
 *.mp4
 *.mpg
