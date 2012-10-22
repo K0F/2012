@@ -55,6 +55,7 @@ boolean inverse = true;
 /////////////////////////
 
 void two() {
+  noSmooth();
   background(inverse?0:255);
   noStroke();
 

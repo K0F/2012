@@ -57,13 +57,12 @@ void setupThree() {
   smooth();
 
   colorMode(HSB);
-  smooth();
   background(22);
 }
 
 void three() {
-
-
+smooth();
+background(0);
 
 
   buffer.beginDraw();

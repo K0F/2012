@@ -3,6 +3,12 @@ import controlP5.*;
 import ddf.minim.analysis.*;
 import ddf.minim.*;
 
+Minim minim;
+
+//float r = 300.0;
+
+FFT fft;
+
 
 ControlP5 cp5;
 
@@ -26,17 +32,19 @@ void setup() {
   size(1024, 768, P2D); 
 
   rectMode(CENTER);
-  frameRate(60);
+  frameRate(100);
   colorMode(HSB);
   background(0);
   noCursor();
 
-
+  setupOne();
   setupThree();
   setupFour();
   setupFive();
   setupSix();
   setupSeven();
+  setupEight();
+  
 }
 
 void init() {
@@ -47,7 +55,7 @@ void init() {
 }
 
 void draw() {
-  background(0);
+  // background(0);
 
   if (frameCount==50) {
     frame.setLocation(0, 0);
@@ -78,13 +86,25 @@ void draw() {
   if (on6) {
     six();
   }
-  
-  if(fade>=10){
-rectMode(CORNER);
-  resetMatrix();
+
+
+  if (on7) {
+    seven();
+  }
+
+
+
+  if (on8) {
+    eight();
+  }
+
+
+  if (fade>=10) {
+    rectMode(CORNER);
+    resetMatrix();
     noStroke();
-  fill(0,fade);
-  rect(0,0,width,height);
+    fill(0, fade);
+    rect(0, 0, width, height);
   }
 
   //blend(g,0,0,width,height,0,0,width,height,OVERLAY);

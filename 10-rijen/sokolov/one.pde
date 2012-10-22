@@ -114,6 +114,8 @@ void oneGUI() {
 
 //////////////////// ONE //////////////
 
+PImage fajfka;
+
 int ctlskip = 15;
 
 float lineSpeed = 50;
@@ -137,11 +139,16 @@ float rotatespeed = 10000.0;
 
 
 
+void setupOne(){
+ fajfka = loadImage("fajfka.png"); 
+  
+}
+
 /////////////////////////////////
 
 void one() {
 
-
+noSmooth();
   background(0);
 
 
@@ -182,12 +189,12 @@ void one() {
 
   pushMatrix();
   noStroke();
-  fill(0, objectalpha);
+  tint(255, objectalpha);
   translate(width/2, height/2);
   translate((noise(millis()/70.0, 0)-.5)*tras2, (noise(0, millis()/70.0)-.5)*tras2);
-
+imageMode(CENTER);
   rotate(millis()/rotatespeed);
-  rect(0, 0, 300, 300);
+  image(fajfka, 0,0);
   popMatrix();
 }
 

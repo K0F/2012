@@ -8,8 +8,8 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip;
-  
-  
+
+
   cp5.addSlider("trasSix")
     .setRange(1, 128)
       .setPosition(40, y)
@@ -17,8 +17,8 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip;
-  
-  
+
+
   cp5.addSlider("pulseSpeed")
     .setRange(1, 128)
       .setPosition(40, y)
@@ -26,7 +26,7 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip;
-  
+
   cp5.addSlider("bright")
     .setRange(1, 128)
       .setPosition(40, y)
@@ -34,11 +34,18 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip*2;
-  
+
   ///////////////////
-  
-  
-  
+
+
+  cp5.addSlider("amt")
+    .setRange(1, 128)
+      .setPosition(40, y)
+        .setSize(200, 10)
+          .moveTo(six)
+            ;
+  y+=ctlskip;
+
   cp5.addSlider("sixSpeed")
     .setRange(1, 128)
       .setPosition(40, y)
@@ -46,8 +53,8 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip;
-  
-  
+
+
   cp5.addSlider("krize")
     .setRange(1, 128)
       .setPosition(40, y)
@@ -55,8 +62,8 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip;
-  
-  
+
+
   cp5.addSlider("effect")
     .setRange(1, 128)
       .setPosition(40, y)
@@ -64,8 +71,8 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip;
-  
-  
+
+
   cp5.addSlider("sixAlpha")
     .setRange(1, 128)
       .setPosition(40, y)
@@ -73,8 +80,8 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip;
-  
-  
+
+
   cp5.addSlider("flicking")
     .setRange(1, 128)
       .setPosition(40, y)
@@ -82,9 +89,9 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip*2;
-  
+
   ///////////////
-  
+
   cp5.addSlider("redAmt")
     .setRange(1, 128)
       .setPosition(40, y)
@@ -92,8 +99,8 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip;
-  
-  
+
+
   cp5.addSlider("greenAmt")
     .setRange(1, 128)
       .setPosition(40, y)
@@ -101,7 +108,7 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip;
-  
+
   cp5.addSlider("bodyAlph")
     .setRange(1, 128)
       .setPosition(40, y)
@@ -109,17 +116,17 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip;
-  
-  
-  cp5.addSlider("al")
+
+
+  cp5.addSlider("al1")
     .setRange(1, 128)
       .setPosition(40, y)
         .setSize(200, 10)
           .moveTo(six)
             ;
   y+=ctlskip;
-  
-  
+
+
   cp5.addSlider("al2")
     .setRange(1, 128)
       .setPosition(40, y)
@@ -127,8 +134,8 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip;
-  
-  
+
+
   cp5.addSlider("elipsaFill")
     .setRange(1, 128)
       .setPosition(40, y)
@@ -136,8 +143,8 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip;
-  
-  
+
+
   cp5.addSlider("elipsaAl")
     .setRange(1, 128)
       .setPosition(40, y)
@@ -145,8 +152,8 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip;
-  
-  
+
+
   cp5.addSlider("sixAlpha2")
     .setRange(1, 128)
       .setPosition(40, y)
@@ -154,8 +161,8 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip;
-  
-  
+
+
   cp5.addSlider("sixAlpha3")
     .setRange(1, 128)
       .setPosition(40, y)
@@ -163,8 +170,15 @@ void sixGUI() {
           .moveTo(six)
             ;
   y+=ctlskip;
-  
-  }
+
+  cp5.addSlider("sides")
+    .setRange(1, 128)
+      .setPosition(40, y)
+        .setSize(200, 10)
+          .moveTo(six)
+            ;
+  y+=ctlskip;
+}
 
 void preset() {
 
@@ -269,8 +283,9 @@ void setupSix() {
 
 
 
+float amt = 12;
 int krize = 30;
-int sixSpeed = 7;
+int sixSpeed = 128;
 float sixAlpha = 0;
 float pulseSpeed = 14;
 float bright = 0;
@@ -313,7 +328,7 @@ float trasSix = 9;
 
 PFont figurative, tiny;
 
-float strokeW = 2;
+float strokeW = 20;
 
 int phase = 1;
 
@@ -460,16 +475,24 @@ void jedna() {
     translate(-width/2, -height/2);
   }
 
+  pushMatrix();
+
+  scale(0.8);
+  translate(0, 100);
   for (int i = 0 ; i < p.size();i++) {
     Linka tmp = (Linka)p.get(i);
     tmp.draw();
   }
 
+  popMatrix();
+
   popStyle();
+
+
 
   textFont(figurative);
   fill(255, noise(frameCount)*120+120);
-  text("fig. "+(cycleSix+1), width/4*3.2+noise(frameCount/2.0, 0)*trasSix/10.0, height-50+noise(0, frameCount/2.0)*trasSix/10.0);
+  text("fig. "+(cycleSix+1), width/4*3.4+noise(frameCount/2.0, 0)*trasSix/10.0, height-50+noise(0, frameCount/2.0)*trasSix/10.0);
 }
 
 
@@ -640,7 +663,7 @@ void dva() {
     blend(g, 0, 0, width, height, 0, 0, width, height, (int)(effect/8.0));
 
   noStroke();
-  if (frameCount%((128-krize)*20)==0)
+  if (frameCount%((129-krize)*20)==0)
     for (int i =0 ; i<width;i+=30) {
       stroke(255, sixAlpha);
       //rect(i,height-30,8,8);
@@ -651,7 +674,7 @@ void dva() {
   ///////////////////////////////////
 
 
-  if (frameCount%(128-sixSpeed)==0)
+  if (frameCount%(129-sixSpeed)==0)
     shift=1;
   else
     shift =0 ;
@@ -660,6 +683,7 @@ void dva() {
   fill(0, 13);
 
   pushStyle();
+  rectMode(CORNER);
   noFill();
   stroke(0);
   strokeWeight(10);
@@ -681,8 +705,8 @@ void dva() {
 
     for (int i = 5; i < fft.specSize()/4.0; i++)
     {
-      stroke(lerpColor(#473B0B, #ffffff, constrain(norm(vals[i], 0, 1024), 0, 1)), vals[i]/8.0*map(ctl[phase][46], 0, 127, 0, 8));
-      vals[i] += (fft.getBand(i)*i*(redAmt/32.0) - vals[i])/(127-greenAmt+1.0);
+      stroke(lerpColor(#473B0B, #ffffff, constrain(norm(vals[i], 0, 1024), 0, 1)), vals[i]/8.0*map(al2, 0, 127, 0, 8));
+      vals[i] += (fft.getBand(i)*i*(amt/32.0) - vals[i])/(129-amt+1.0);
       t = (radians(map(i+frameCount/50.0+q, 0, fft.specSize()/4.0, 0, 360)));
       vertex(sin(t)*vals[i], cos(t)*vals[i]);
       cx+=(sin(t)*vals[i]-cx)/1000.0;
@@ -761,7 +785,7 @@ void tri() {
   {
     noFill();
     stroke(255, al2);
-    rots[i] += (lerp(0, in.right.get(i), ctl[phase][21]/2.0)-rots[i])/10.0;
+    rots[i] += (lerp(0, in.right.get(i), amt/2.0)-rots[i])/10.0;
     rotate(radians(rots[i])*10);
     rect(0, 0, i, i);
   }
@@ -836,7 +860,7 @@ class Shaper {
 
   void gen() {
 
-    sides = ctl[phase][7];
+    //sides = ctl[pha;
 
     vec = new ArrayList();
 
@@ -877,5 +901,4 @@ class Shaper {
     }
   }
 }
-
 

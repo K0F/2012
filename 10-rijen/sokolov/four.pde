@@ -3,7 +3,7 @@ void fourGUI() {
   int y = ctlskip*2;
 
   cp5.addSlider("sensitivity")
-    .setRange(0, 1)
+    .setRange(0, 10  )
       .setPosition(40, y)
         .setSize(200, 10)
           .moveTo(four)
@@ -12,21 +12,16 @@ void fourGUI() {
 }
 
 
-Minim minim;
-
-//float r = 300.0;
-
-FFT fft;
 
 //float trasa = 3.0;
 //boolean invert = false;
-float sensitivity = 0.04;
+float sensitivity = 10.0;
 
 
 
 void setupFour() {
-  minim = new Minim(this);
-  in = minim.getLineIn(Minim.STEREO, 1024);
+ // minim = new Minim(this);
+ // in = minim.getLineIn(Minim.STEREO, 1024);
 
 
   //pgl = (PGraphicsOpenGL) g; //processing graphics object
@@ -37,7 +32,7 @@ void setupFour() {
 
 void four() {
 
-
+noSmooth();
   // r = sin(frameCount/30.0)*600.0;
 
   // background(invert?0:255);

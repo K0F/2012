@@ -1,4 +1,4 @@
-void initGUI() {
+  void initGUI() {
 
 
   cp5 = new ControlP5(this);
@@ -68,6 +68,15 @@ void initGUI() {
   x+=30;
   
   
+  // create a toggle
+  cp5.addToggle("on8")
+    .setPosition(x, ctlskip*2)
+      .setSize(20, 20)
+        .moveTo(controlWindow)
+          ;
+  x+=30;
+  
+  
   int y = ctlskip*6;
 
   cp5.addSlider("fade")
@@ -91,6 +100,7 @@ void initGUI() {
   five = controlWindow.addTab("five");
   six = controlWindow.addTab("six");
  seven = controlWindow.addTab("seven");
+ eight = controlWindow.addTab("eight");
 
 
 
@@ -98,9 +108,11 @@ void initGUI() {
   twoGUI();
   threeGUI();
   fourGUI();
-
+fiveGUI();
   sixGUI();
   sevenGUI();
+  
+  eightGUI();
 
 
   guidone = true;

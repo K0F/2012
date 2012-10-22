@@ -1,3 +1,64 @@
+void fiveGUI(){
+  
+  int y = ctlskip*2;
+
+  cp5.addSlider("shake")
+    .setRange(0, 255)
+      .setPosition(40, y)
+        .setSize(200, 10)
+          .moveTo(five)
+            ;
+  y+=ctlskip;
+  
+  
+  
+  cp5.addSlider("glob_speed")
+    .setRange(1, 255)
+      .setPosition(40, y)
+        .setSize(200, 10)
+          .moveTo(five)
+            ;
+  y+=ctlskip;
+  
+  
+  cp5.addSlider("avoidance_radius")
+    .setRange(0, 255)
+      .setPosition(40, y)
+        .setSize(200, 10)
+          .moveTo(five)
+            ;
+  y+=ctlskip;
+
+  cp5.addSlider("learning_rate")
+    .setRange(0, 255)
+      .setPosition(40, y)
+        .setSize(200, 10)
+          .moveTo(five)
+            ;
+  y+=ctlskip;
+  
+  
+  cp5.addSlider("attract_force")
+    .setRange(100, 100000)
+      .setPosition(40, y)
+        .setSize(200, 10)
+          .moveTo(five)
+            ;
+  y+=ctlskip;
+  
+  
+  
+  cp5.addSlider("follow_speed")
+    .setRange(3, 255)
+      .setPosition(40, y)
+        .setSize(200, 10)
+          .moveTo(five)
+            ;
+  y+=ctlskip;
+
+  
+}
+
 ////////////////////////////////
 ArrayList nodes;
 
@@ -65,6 +126,8 @@ void setupFive() {
 }
 
 void five() {
+  smooth();
+  background(0);
 
   pushMatrix();
 
