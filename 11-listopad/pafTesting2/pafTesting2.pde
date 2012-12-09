@@ -1,8 +1,8 @@
 /**
-*
-*    Spectral Scenery, kof 2012, PAF Olomouc
-*
-*/
+ *
+ *    Spectral Scenery, kof 2012, PAF Olomouc
+ *
+ */
 
 
 import promidi.*;
@@ -29,6 +29,10 @@ import javax.media.opengl.*;
 boolean sw = true;
 boolean dumbie = true;
 
+PImage title;
+int titfade = 0;
+boolean fadein = false;
+boolean fadeout = false;
 
 ///////////////////////////////////////////////////
 
@@ -107,7 +111,7 @@ String txt = "kof & lasonick";
 
 void setup() {
   size(1280, 720, ogl ? OPENGL : P3D);
-
+  title = loadImage("title.png");
   noiseSeed(7);
 
   hints();
@@ -131,10 +135,16 @@ void setup() {
   println("printPorts of midiIO");
   midiIO.printDevices();
   println();
-  midiIO.openInput(0, 0);
-  midiOut = midiIO.getMidiOut(0, 1);
 
-  initMidi();
+  try {
+    midiIO.openInput(0, 0);
+    midiOut = midiIO.getMidiOut(0, 1);
+
+    initMidi();
+  }
+  catch(Exception e) {
+    println("Zadne midi zarizeni neni pripojeno");
+  }
 
 
   oscP5 = new OscP5(this, 12000);
@@ -230,14 +240,35 @@ void draw() {
   case 4:
     three();
     break;
-    case 5:
+  case 5:
     four();
     break;
-  
   }
 
   if (ctl[25]>5)
     fastblur(g, (int)(ctl[25]/3.0));
+
+
+  title();
+}
+
+void title() {
+
+
+  if (titfade>5) {
+    cam.beginHUD();
+    tint(titfade);
+    image(title, 0, 0);
+    cam.endHUD();
+  }
+
+  if (fadein && titfade < 255) {
+    titfade++;
+  }
+  
+  else if (fadeout && titfade>0) {
+    titfade--;
+  }
 }
 
 ////////////////////////////////////////////////////////
@@ -248,9 +279,9 @@ void oscEvent(OscMessage theOscMessage) {
   if (theOscMessage.checkTypetag("if")) {
     oscInput = theOscMessage.get(0).intValue();
     valInput = theOscMessage.get(1).floatValue();
-    fades[oscInput-1] = constrain(valInput*255.0+100,0,255);
+    fades[oscInput-1] = constrain(valInput*255.0+100, 0, 255);
 
-    
+
     //println(oscInput +" "+valInput);
     hasSignal = true;
   }
@@ -270,10 +301,10 @@ void stop()
 
 void rot() {
 
-  sx += (ctl[29]/20.4-sx)/map(ctl[27],0,127,2.0,400.0);
-  sy += (ctl[30]/20.4-sy)/map(ctl[27],0,127,2.0,400.0);
-  sz += (ctl[31]/20.4-sz)/map(ctl[27],0,127,2.0,400.0);
-  zoom += (map(ctl[28], 0, 127, 1200, 200)-zoom)/map(ctl[27],0,127,2.0,400.0);
+  sx += (ctl[29]/20.4-sx)/map(ctl[27], 0, 127, 2.0, 400.0);
+  sy += (ctl[30]/20.4-sy)/map(ctl[27], 0, 127, 2.0, 400.0);
+  sz += (ctl[31]/20.4-sz)/map(ctl[27], 0, 127, 2.0, 400.0);
+  zoom += (map(ctl[28], 0, 127, 1200, 200)-zoom)/map(ctl[27], 0, 127, 2.0, 400.0);
   // println(zoom);
 
   cam.setRotations(sx, sy, sz);
@@ -298,48 +329,56 @@ void tras(float _ctl) {
 
 ////////////////////////////////////////////////////////
 
-void keyPressed(){
-  
-  if(key=='0'){
-   mode = 0; 
+void keyPressed() {
+
+  if (key=='0') {
+    mode = 0;
   }
-  
-  if(key=='1'){
-   mode = 1; 
+
+  if (key=='1') {
+    mode = 1;
   }
-  
-  if(key=='2'){
-   mode = 2; 
+
+  if (key=='2') {
+    mode = 2;
   }
-  
-  if(key=='3'){
-   mode = 3; 
+
+  if (key=='3') {
+    mode = 3;
   }
-  
-  if(key=='3'){
-   mode = 3; 
+
+  if (key=='3') {
+    mode = 3;
   }
-  
-  if(key=='4'){
-   mode = 4; 
+
+  if (key=='4') {
+    mode = 4;
   }
-  
-  if(key=='5'){
-   mode = 5; 
+
+  if (key=='5') {
+    mode = 5;
   }
-  
-  if(key=='6'){
-   mode = 6; 
+
+  if (key=='6') {
+    mode = 6;
   }
-  
-  if(key=='7'){
-   mode = 7; 
+
+  if (key=='7') {
+    mode = 7;
   }
-  
-  if(key=='8'){
-   mode = 8; 
+
+  if (key=='8') {
+    mode = 8;
   }
-  
-  
+
+  if (key=='t') {
+    if (!fadein && !fadeout) {
+      fadein = true;
+    }
+    else if (fadein && !fadeout) {
+      fadein = false;
+      fadeout = true;
+    }
+  }
 }
 
