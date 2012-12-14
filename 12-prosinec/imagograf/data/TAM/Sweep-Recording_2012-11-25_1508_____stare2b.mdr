@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<McsDataRecording>
+    <DocumentSettings>
+        <Userdata name="Title">stare2b</Userdata>
+        <RecordingStarted>2012-11-26T12:06:42</RecordingStarted>
+    </DocumentSettings>
+    <DeviceSettings>
+        <CalibratedFrequencyMax>6000</CalibratedFrequencyMax>
+        <Class>AHFSpectranDevice</Class>
+        <Model>4060</Model>
+        <Options>0000000000000001</Options>
+        <Serial>26412</Serial>
+        <InfoString index="0">4060</InfoString>
+        <InfoString index="1">3</InfoString>
+        <InfoString index="2">17</InfoString>
+        <InfoString index="3">1300 mAh NiMH</InfoString>
+        <InfoString index="4">V2.20</InfoString>
+        <InfoString index="5">17.10.2012</InfoString>
+        <InfoString index="6">26412</InfoString>
+        <InfoString index="7">T. Adams</InfoString>
+        <InfoString index="8">  </InfoString>
+        <Variable name="AntennaGain">0</Variable>
+        <Variable name="AntennaType">-1</Variable>
+        <Variable name="AttenuationFactor">-10</Variable>
+        <Variable name="Beep">-1</Variable>
+        <Variable name="CableType">-1</Variable>
+        <Variable name="CenterFrequency">3000.5</Variable>
+        <Variable name="DemodulatorMode">0</Variable>
+        <Variable name="DisplayRange">100</Variable>
+        <Variable name="DisplayUnit">0</Variable>
+        <Variable name="LogFileID">1000</Variable>
+        <Variable name="LogFileMaxSamples">0</Variable>
+        <Variable name="LogFileTimeInterval">-1</Variable>
+        <Variable name="MarkerCount">3</Variable>
+        <Variable name="MaxPeakPow">-120</Variable>
+        <Variable name="MinPowerMarker">-70</Variable>
+        <Variable name="Peak1Frequency">0</Variable>
+        <Variable name="Peak1Pow">-120</Variable>
+        <Variable name="Peak2Frequency">0</Variable>
+        <Variable name="Peak2Pow">-120</Variable>
+        <Variable name="Peak3Frequency">0</Variable>
+        <Variable name="Peak3Pow">-120</Variable>
+        <Variable name="PeakDisplayMode">0</Variable>
+        <Variable name="PulseMode">1</Variable>
+        <Variable name="RBWFrequencySteps">3</Variable>
+        <Variable name="ReceiverConfiguration">0</Variable>
+        <Variable name="ReferenceLevel">20</Variable>
+        <Variable name="ReportValueAtPixel">-1</Variable>
+        <Variable name="ResolutionBandwidth">1</Variable>
+        <Variable name="SpanFrequency">5999</Variable>
+        <Variable name="SpectrumDisplayMode">1</Variable>
+        <Variable name="SpectrumMode">0</Variable>
+        <Variable name="StartFrequency">1</Variable>
+        <Variable name="StopFrequency">6000</Variable>
+        <Variable name="SweepTime">10</Variable>
+        <Variable name="UsbMeasurementData">1</Variable>
+        <Variable name="UsbResetSweep">1</Variable>
+        <Variable name="UsbSweepIdentification">-1</Variable>
+        <Variable name="VideoBandwidth">1</Variable>
+    </DeviceSettings>
+    <ProcessorSettings>
+        <CalibrationManual>0</CalibrationManual>
+        <SweepProfile>GSM900</SweepProfile>
+    </ProcessorSettings>
+</McsDataRecording>

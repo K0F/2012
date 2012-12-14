@@ -1,0 +1,3 @@
+obe dva adresare predstavuji data ze stejneho prostoru, ktery jsme jednou prochazeli tam a pak zpet
+smerem tam vznikla dira
+soubory CSV jsou prekonvertovane MDR

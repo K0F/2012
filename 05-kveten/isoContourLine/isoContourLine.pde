@@ -22,7 +22,7 @@ void draw() {
 
   pushMatrix();
 
-  translate(width/2, height/2+30);
+  translate(width, height+30);
   scale(0.75);
   rotateX(radians(30));
   rotateZ(radians(X));
