@@ -15,7 +15,7 @@ PeasyCam cam;
 /////////////////////////////////////////
 
 void setup() {
-  size(900, 900, P3D);
+  size(1024, 1024, P3D);
   textFont(loadFont("Monaco-10.vlw"));
   textMode(SCREEN);
   noSmooth();
@@ -31,4 +31,10 @@ void draw() {
   
   trasa.plot();
 }
+
+void keyPressed(){
+  save("img"+icnt+".png");
+  icnt++;
+}
+int icnt = 0;
 
