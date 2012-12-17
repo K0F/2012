@@ -1,3 +1,14 @@
+
+
+import java.util.Arrays;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+
 /*
  *    Yet antoher flocking sketch
  *    documented live
@@ -24,7 +35,7 @@ float ATT_FORCE = 10000.0;
 float SHAKE = 2;
 
 int BEGIN_TIME;
-float SPEED = 10;
+float SPEED = 30;
 //////////////////////////////////////////
 
 void setup() {
@@ -44,7 +55,7 @@ void setup() {
   textMode(SCREEN);
 
   parser = new TTYParser("program.tty");
-  terminal = new Terminal(80, 24);
+  terminal = new Terminal(this, 80, 24);
 }
 
 //////////////////////////////////////////
@@ -75,8 +86,9 @@ void draw() {
     fr.update();
   }
 
-  text(terminal.to_String(), 10, 20);
-  //terminal.to_screen(10,20);
+  //text(terminal.to_String(), 10, 20);
+  fill(0);
+  terminal.to_Screen(10,20);
 
   pushMatrix();
 
