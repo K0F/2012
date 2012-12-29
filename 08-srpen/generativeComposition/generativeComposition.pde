@@ -1,11 +1,15 @@
+import ddf.minim.signals.*;
 import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
 import ddf.minim.ugens.*;
+
 
 ////////////////////////////////////
 String notesLow[], notesHigh[];
 
 int pitchLow = 1;
-int pitchHigh = 3;
+int pitchHigh = 4;
 
 float[][] vals;
 int nn = 30;
@@ -14,18 +18,20 @@ String notes[]= {
   "A","F","E","D","C"
 };
 
-int period = 120;
+int period = 200;
+
 ////////////////////////////////////
 
 
 
-float amp = 0.2;
-int num = 4;
-float dur = 20;
+float amp = 0.15;
+int num = 1;
+float dur = 10;
 
 Minim minim;
 AudioOutput out;
 Waveform disWave;
+BandPass bp;
 
 
 ////////////////////////////////////
@@ -34,10 +40,12 @@ Waveform disWave;
 
 void setup()
 {
-  size( 600, 320, P2D );
+  size( 800,600, P2D );
   
   textFont(loadFont("53Maya-8.vlw"));
   textMode(SCREEN);
+  
+  frameRate(30);
 
 
   makeScale();
@@ -52,6 +60,7 @@ void setup()
 
   background(0);
     addNotesNow();
+
 }
 
 ////////////////////////////////////
@@ -63,7 +72,7 @@ void makeScale() {
     disWave = Waves.SINE;
   }
   else {
-    disWave = Waves.TRIANGLE;
+    disWave = Waves.SINE;
   }
 
   notesLow = new String[notes.length];
@@ -80,7 +89,7 @@ void makeScale() {
 
 void draw() {
   noStroke();
-  fill(noise(frameCount/200.0)*255, 25, 25, random(25, 75));
+  fill(noise(frameCount)*40+20, 40, 25, random(35, 75));
   rect(0, 0, width, height);
 
 
@@ -102,25 +111,25 @@ void draw() {
 
     int cnt = 0;
 
-    for (int j = 2 ; j < nn;j++) {
+    for (int j = 2 ; j < nn;j+=5) {
 
       if (j==2) {
         resetMatrix();
 
         translate(map(i, 0, out.bufferSize(), 0, width), height/2);
-        rotate(radians(frameCount*8.0));
+        rotate(radians(frameCount/300.0*8.0));
       }
 
 
-      for (int z = 200 ; z < 10000;z+=2000) {
+      for (int z = 200 ; z < 10000 ; z+=5000) {
 
-        vals[j][i] += ((out.left.get(i)*noise((i+j+frameCount)/30.0)*z)-vals[j][i])/(float)(j+z/18.0+2.0);
+        vals[j][i] += ((out.left.get(i)*noise((i+j+frameCount)/30.0)*z)-vals[j][i])/(float)(j+z/6.0+2.0);
 
-        translate(0, vals[j][i]);
+        translate(0, vals[j][i]*2);
         rotate(i/(out.bufferSize()+0.0));
 
 
-        stroke(noise(0, (frameCount+i+j+z)/200.0)*255, 35, 200, 15);
+        stroke(noise(0, (frameCount+i+j+z)/200.0)*255, 35, 200, 50);
         //  stroke( 255, 15);
 
         point(0, 0);
@@ -141,7 +150,12 @@ void draw() {
   
   fill(255,50);
   textAlign(RIGHT);
-  text("Random Generative Composition by Kof "+nf(month(),2)+"/"+nf(day(),2)+"/"+year(),width-10,height-8);
+  text("Random Generative Composition by Kof "+
+  nf(hour(),2)+":"+nf(minute(),2)+":"+nf(second(),2)+
+  "  "+nf(day(),2)+"/"+nf(month(),2)+"/"+year(),
+  width-10,height-8);
+  
+  
 }
 
 void keyPressed() {
@@ -151,8 +165,8 @@ void keyPressed() {
 
 void addNotesNow() {
   
-    pitchLow = (int)random(1, 4);
-    pitchHigh = (int)random(5, 7);
+    pitchLow = (int)random(-3, 4);
+    pitchHigh = (int)random(4, 7);
 
     makeScale();
   

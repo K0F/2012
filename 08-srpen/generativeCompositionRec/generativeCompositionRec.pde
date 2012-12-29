@@ -2,7 +2,7 @@ import ddf.minim.*;
 import ddf.minim.ugens.*;
 
 boolean pause = false;
-boolean recSound = false;
+boolean recSound = true;
 
 ////////////////////////////////////
 String notesLow[], notesHigh[];
